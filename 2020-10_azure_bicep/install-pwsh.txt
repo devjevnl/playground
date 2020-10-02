@@ -1,0 +1,15 @@
+
+ON VM -----------------------------------
+- Create new regular user on VM
+- Give user RDP permissions
+- Set user role as administrator
+-----------------------------------------
+
+PowerShell 5 - Administrator Mode -------
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+Invoke-Expression "& { $(Invoke-RestMethod https://aka.ms/install-powershell.ps1) } -UseMSI"
+-----------------------------------------
+
+PowerShell 7: ---------------------------
+C:\dev\install-vmFeatures.ps1
+-----------------------------------------
