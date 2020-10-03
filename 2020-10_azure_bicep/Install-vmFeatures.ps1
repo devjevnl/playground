@@ -78,8 +78,7 @@ function Install-vmFeatures {
         if ($SkipVSCode.IsPresent -eq $false) {
             Write-Information "Installing VSCode"
             Start-Process -Wait $vsCodePath -ArgumentList /silent, /mergetasks=!runcode
-        }
-        else {
+        } else {
             Write-Information "SKIPPING: Installing VSCode"
         }
 
@@ -87,8 +86,7 @@ function Install-vmFeatures {
             # Installing extension extentions
             Write-Information "Installing vscode PowerShell extention"
             & $codeCmdPath --install-extension  ms-vscode.powershell
-        }
-        else {
+        } else {
             Write-Information "SKIPPING: Installing vscode PowerShell extention"
         }
 
@@ -99,13 +97,16 @@ function Install-vmFeatures {
             # install PowerShell AZ module
             Write-Information "Installing AZ Module"
             Install-Module -Name Az -Repository PSGallery -Force -Verbose
-        }
-        else {
+        } else {
             Write-Information "SKIPPING: Installing AZ Module"
         }
 
         if ($SkipGit.IsPresent -eq $false) {
+            # install gIT
+            Write-Information "Installing Git"
             Start-Process -Wait $gitPath -ArgumentList /VERYSILENT, /NORESTART, /NOCANCEL, /LOADINF="$repoRoot\git.inf"
+        } else {
+            Write-Information "SKIPPING: Installing Git"
         }
     }
 
